@@ -403,6 +403,30 @@ survival o f the fittest, strength of th eprson is array
 with pop index
 with remove item
 
+
+def game(arr):
+  i=0
+  while len(arr)>1:
+    arr.sort(reverse=True)
+    if arr[i]==arr[i+1]:
+      arr.pop(i)
+      arr.pop(i)
+    else:
+      arr[i]=arr[i]-arr[i+1]
+      arr.pop(i+1)
+  return arr
+    
+  
+    
+arr=[2,7,4,3,8,6,9]
+print(game(arr))
+
+Output:
+
+[1]
+
+..........................................................
+
         
 
 
