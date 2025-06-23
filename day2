@@ -1,0 +1,414 @@
+given a number, check whether it is power of 2 or not
+
+ -4 false
+0 false
+1 true
+10 false
+32 true
+8 true
+16 yes
+
+def ispower(n):
+  if n<=0:
+    return False
+  elif n==1:
+    return True
+  else:
+      
+    while(n%2==0):
+      n=n/2
+    if n==1:
+      return True
+    else:
+      return False
+n=int(input())
+print(ispower(n))
+      
+      16
+      Output:
+
+True
+..............................
+n= int(input())
+for i in range(1,11):
+  print(" %2d * %2d = %4d"%(n,i,n*i))
+
+  Output:
+
+ 19 *  1 =   19
+ 19 *  2 =   38
+ 19 *  3 =   57
+ 19 *  4 =   76
+ 19 *  5 =   95
+ 19 *  6 =  114
+ 19 *  7 =  133
+ 19 *  8 =  152
+ 19 *  9 =  171
+ 19 * 10 =  190
+.......................................
+
+  reverse a given number having 2 or more digits
+using string
+using stack
+using modulo arithemtc
+two pointer technique
+
+  def rev_1_str(n):
+    n = str(n)
+    s1 = ""
+    for i in range(len(n)-1, -1, -1):
+        s1 += n[i]
+    return int(s1)
+
+n = int(input("Enter a number: "))
+print(rev_1_str(n))
+..............
+      def rev_2(n):
+    stack=[]
+    while n !=0:
+      stack.append(n%10)
+      n=n//10
+    rev=0
+    for i in stack:
+      rev=(rev*10)+i 
+    return rev
+    
+   
+n = int(input("Enter a number: "))
+print(rev_2(n))
+      ..............
+      def rev_3(n):
+  m=0
+  while(n!=0):
+    m=m*10+n%10
+    n=n//10
+  return m 
+n=int(input())
+print(rev_3(n))
+      ......................
+      def reverse_with_two_pointers(n):
+    n = list(str(n))  # Convert number to list of characters
+    left, right = 0, len(n) - 1
+
+    while left < right:
+        n[left], n[right] = n[right], n[left]
+        left += 1
+        right -= 1
+
+    return int("".join(n))  # Join back and convert to integer
+
+n = int(input("Enter a number: "))
+print(reverse_with_two_pointers(n))
+..........................
+      cobeting decimail to binary
+
+      def reverse_with_two_pointers(n):
+    n = list(str(n))  # Convert number to list of characters
+    left, right = 0, len(n) - 1
+
+    while left < right:
+        n[left], n[right] = n[right], n[left]
+        left += 1
+        right -= 1
+
+    return int("".join(n))  # Join back and convert to integer
+
+n = int(input("Enter a number: "))
+print(reverse_with_two_pointers(n))
+
+
+      Output:
+
+    1          1
+    2         10
+    3         11
+    4        100
+    5        101
+    6        110
+    7        111
+    8       1000
+    9       1001
+   10       1010
+
+      ................................
+      class conversion:
+  def d2b(self,n):
+    binary,base=0,1
+    while(n>0):
+      binary=binary+n%2*base
+      base = base *10
+      n=n//2
+    return binary
+
+  
+c1=conversion()
+print((c1.d2b(25)))
+      Output:
+
+11001
+
+  ...........................
+  class conversion:
+  @staticmethod #decorator
+  def d2b(n):
+    binary,base=0,1
+    while(n>0):
+      binary=binary+n%2*base
+      base = base *10
+      n=n//2
+    return binary
+  
+c1=conversion()
+print((c1.d2b(25)))
+      ...................
+      class conversion:
+  @classmethod
+  def f(self):
+    print(" this method is creaded my mits")
+  @staticmethod #decorator
+  def d2b(n):
+    binary,base=0,1
+    while(n>0):
+      binary=binary+n%2*base
+      base = base *10
+      n=n//2
+    return binary
+  
+c1=conversion()
+print((c1.d2b(25)))
+print(conversion.f())
+      .............................
+
+
+
+      class conversion:
+  @classmethod
+  def f(self):
+    print(" this method is creaded my mits")
+  @staticmethod #decorator
+  def d2b(n):
+    binary, base = 0, 1
+    while n > 0:
+        binary = binary + (n % 2) * base
+        base = base * 10
+        n = n // 2
+    return binary
+    
+  @staticmethod
+  def b2d(binary):
+    decimal, base = 0, 1
+    while binary > 0:
+        last_digit = binary % 10
+        decimal += last_digit * base
+        base = base * 2
+        binary = binary // 10
+    return decimal
+
+  
+  
+c1=conversion()
+print((c1.d2b(25)))
+
+print(conversion.f())
+print((c1.b2d(101010101)))
+
+      Output:
+
+11001
+ this method is creaded my mits
+None
+341
+
+  .............................
+  given two numbers 25,10 find out hcf/gcd
+    this algorithm is called euclid algorithm..
+    to apply this 1st number should be bigger than b,else swap a,b
+    find a%b,call it as remainder
+
+      def euclid_gcd(a, b):
+    if a < b:
+        a, b = b, a  # Ensure a > b
+    
+    while b != 0:
+        r = a % b
+        a = b
+        b = r
+    return a
+a,b=map(int,input().split())
+print(euclid_gcd(a,b))
+
+25 15
+
+Output:
+
+5
+
+...........................................
+
+  fibanocci series
+  0,1,1,2,3,5,8,13,21,34
+tribonacci series
+    0,1,1,2,4,7,13
+...................................
+      
+class series:
+  @staticmethod
+  def fib(n):
+    if n==0:
+      return 0
+    if n==1:
+      return 1
+    a,b=0,1
+    
+    for _ in range(n):
+      print(a,end=" ")
+      a,b=b,a+b
+series.fib(10)
+
+
+  Output:
+
+0 1 1 2 3 5 8 13 21 34 
+
+........................................
+
+fibancci search is the best search
+
+The **Fibonacci series** appears widely in **nature**, both visually and mathematically. Here's a list of fascinating real-life **applications of the Fibonacci sequence in nature**:
+
+---
+
+### 🌻 1. **Flower Petals**
+
+* Many flowers have petals in Fibonacci numbers:
+
+  * Lily: 3 petals
+  * Buttercup: 5 petals
+  * Daisies: 34, 55, or even 89 petals
+* This arrangement maximizes exposure to sunlight for photosynthesis.
+
+---
+
+### 🌱 2. **Leaf Arrangement (Phyllotaxis)**
+
+* Leaves are often arranged in spirals along a stem in Fibonacci ratios (e.g., 1/2, 2/3, 3/5).
+* This spacing helps **maximize sunlight capture** without shading each other.
+
+---
+
+### 🌻 3. **Seed Heads (e.g., Sunflowers)**
+
+* Sunflowers, pinecones, and pineapples show **spiral patterns** that match Fibonacci numbers.
+* Example: A sunflower head may have **34 spirals in one direction, and 55 in the other**.
+* These patterns help **pack seeds tightly and efficiently**.
+
+---
+
+### 🍍 4. **Fruit and Vegetables**
+
+* Fibonacci spirals are seen in pineapples, Romanesque broccoli, and cauliflower.
+* These spirals help in **efficient packing and growth**.
+
+---
+
+### 🐚 5. **Shell Spirals (e.g., Nautilus)**
+
+* The **logarithmic spiral** of shells closely resembles the **Golden Spiral**, which is based on the Fibonacci sequence.
+* It helps in **balanced growth** — the organism can grow without changing shape.
+
+---
+
+### 🐇 6. **Animal Reproduction**
+
+* Fibonacci originally created the sequence to model **rabbit population growth**.
+* Some animal reproduction cycles and branching patterns also follow Fibonacci growth.
+
+---
+
+### 🐌 7. **Horns, Antlers, and Tails**
+
+* The curve of some animal **horns, tails, or antlers** follows the Golden Spiral.
+
+---
+
+### 🌊 8. **Hurricanes & Galaxies**
+
+* The **spiral arms of hurricanes and galaxies** often follow logarithmic spirals, approximating Fibonacci ratios.
+
+---
+
+### 🧬 9. **DNA and Genetics**
+
+* The **ratios** found in the Fibonacci sequence (like 1.618...) appear in the **structure of DNA**, especially in the way it twists.
+
+---
+
+### 🧠 10. **Human Anatomy**
+
+* The number of bones in human fingers (3 in each finger, 2 in the thumb) follows Fibonacci.
+* The **spiral of the ear** also follows the Golden Spiral.
+
+---
+
+### 💡 Summary:
+
+| Nature Element      | Fibonacci Number Example       |
+| ------------------- | ------------------------------ |
+| Flower Petals       | 3, 5, 8, 13, 21…               |
+| Sunflower Spirals   | 34 and 55                      |
+| Pineapple Eyes      | 5, 8, 13                       |
+| Rabbit Reproduction | Fibonacci model origin         |
+| Shells, Galaxies    | Spiral shapes via Golden Ratio |
+
+---
+
+Let me know if you want to see **diagrams** or a **presentation-style summary**!
+
+class series:
+  @staticmethod
+  def fib(n):
+    if n==0:
+      return 0
+    if n==1:
+      return 1
+    a,b=0,1
+    
+    for _ in range(n):
+      print(a,end=" ")
+      a,b=b,a+b
+  @staticmethod
+  def trib(n):
+    if n==0:
+      return 0
+    if n==1:
+      return 1
+    if n==2:
+      return 1
+    a,b,c=0,1,1
+    for _ in range(n):
+      print(a,end=" ")
+      a,b,c=b,c,a+b+c
+series.fib(10)
+print("")
+series.trib(10)
+
+        Output:
+
+0 1 1 2 3 5 8 13 21 34 
+0 1 1 2 4 7 13 24 44 81 
+  ............................
+  
+game[2,7,4,3,8,6,9]
+survival o f the fittest, strength of th eprson is array
+with pop index
+with remove item
+
+        
+
+
+
+    
+  
+    
+      
+
