@@ -1,0 +1,369 @@
+find the frequency of each chareacter in a string.
+also findout charecter with hiqhest frequency..
+def char_frequency(s):
+    freq = {}
+
+    # Count frequency of each character
+    for char in s:
+        if char in freq:
+            freq[char] += 1
+        else:
+            freq[char] = 1
+
+    # Print frequencies
+    print("Character frequencies:")
+    for char in freq:
+        print(f"'{char}': {freq[char]}")
+
+    # Find the character with the highest frequency
+    max_char = max(freq, key=freq.get)
+    print(f"\nCharacter with highest frequency: '{max_char}' ({freq[max_char]} times)")
+
+# Example usage
+input_str = input("Enter a string: ")
+char_frequency(input_str)
+
+engineering
+
+STDIN
+Output:
+
+Enter a string: Character frequencies:
+'e': 3
+'n': 3
+'g': 2
+'i': 2
+'r': 1
+
+Character with highest frequency: 'e' (3 times)
+
+....................
+
+string comprehension
+aaabbccccddd i want to send to kaashmir
+i want to encryt it
+3a2b4c3d
+
+https://onecompiler.com/python/43nsv4wkm
+
+def run_length_encode(s):
+    result = ""
+    i = 0
+    n = len(s)
+
+    while i < n:
+        j = i
+        while j < n and s[j] == s[i]:
+            j += 1
+        count = j - i
+        result += str(count) + s[i]
+        i = j  # Move to next group
+
+    return result
+
+# Example usage
+input_str = "aaabbccccddd"
+encoded = run_length_encode(input_str)
+print("Encrypted string:", encoded)
+      
+
+........................
+
+given
+a&b#@de!
+revese alphabets without changing the positin of special charecters.
+
+      def encodeString( s ):
+  n = len(s)
+  res = ""
+  i =0
+  while i < n :
+    sub = ""
+    count = 1
+    for j in range(i+1, n):
+      if s[i] == s[j]:
+        count = count + 1
+      else :
+        break 
+    sub = str(count) + s[i]
+    i = i + count
+    res = res + sub
+  return res
+  
+def countNsay(nLines):
+  s = "1"
+  print(s)
+  for line in range(2, 11):
+    res = encodeString(s)
+    print(res)
+    s = res
+  return   
+  
+countNsay(10)
+  
+  
+1
+11
+21
+1211
+111221
+312211
+13112221
+1113213211
+31131211131221
+13211311123113112211
+
+.........................
+
+def reverse_only_letters(s):
+    chars = list(s)
+    i, j = 0, len(chars) - 1
+
+    while i < j:
+        if not chars[i].isalpha():
+            i += 1
+        elif not chars[j].isalpha():
+            j -= 1
+        else:
+            # Swap letters
+            chars[i], chars[j] = chars[j], chars[i]
+            i += 1
+            j -= 1
+
+    return ''.join(chars)
+
+# Example usage
+input_str = "a&b#@de!"
+output_str = reverse_only_letters(input_str)
+print("Reversed:", output_str)
+
+
+Output:
+
+Reversed: e&d#@ba!
+
+.......................
+triplets = []
+for a in range(1, 21):
+  for b in range(a+1, 21):
+    for c in range(b+1, 21):
+      if a**2 + b**2 == c**2:
+        triplets.append([a, b, c])
+print(triplets)
+
+Output:
+
+[[3, 4, 5], [5, 12, 13], [6, 8, 10], [8, 15, 17], [9, 12, 15], [12, 16, 20]]
+
+........................
+length of longest subsequesnce of non repeating charectors in a string 
+aabcddefghijjkl
+
+def llssnrchars(s):
+  charSet = set()
+  left, maxLength, n = 0, 0, len(s)
+  for right in range(n):
+    while s[right] in charSet :
+      charSet.remove(s[left])
+      left = left + 1
+    charSet.add(s[right])
+    length = right - left + 1 
+    maxLength = max (maxLength, length)
+  return maxLength 
+  
+s = "beautiful"
+print(llssnrchars(s))
+  output: 7
+
+/.........................
+
+strs=["venkat","venkatesh","venki","venkateshwar","veeru"]
+minStr=min(strs,key=len)
+print(minStr)
+
+for i, charecter in enumerate(minStr):
+  print(i,charecter)
+
+
+
+STDIN
+Output:
+
+venki
+0 v
+1 e
+2 n
+3 k
+4 i
+
+..............................
+
+def lcPrifix(strs):
+  minLenStr = min(strs, key = len)
+  for i, ch in enumerate(minLenStr):
+    for s in strs:
+      if s[i] != ch:
+        minLenStr = minLenStr[:i]
+  return minLenStr
+
+
+strs = ["venkat", "venkatesh", "venki", 
+        "venkateshwar", "venkanna", "veeru"]
+print(lcPrifix(strs))
+
+Output:
+
+ve
+
+.............................
+
+check two strings are anagrams are not
+ate,eat,tea
+ate,tan,tea,eat,ant
+make group of anagrams
+
+# brute force approach
+def isAnagram(s1, s2):
+  if len(s1) != len(s2):
+    return False 
+  else :
+    s1 = sorted(list(s1))
+    s2=  sorted(list(s2));
+    return True if s1 == s2 else False 
+
+s1 = input()
+s2 = input()
+print(isAnagram(s1, s2))
+  
+elbow
+below
+STDIN
+Output:
+
+True
+
+# brute force approach
+def isAnagram(s1, s2):
+  if len(s1) != len(s2):
+    return False 
+  else :
+    s1 = sorted(list(s1))
+    s2=  sorted(list(s2));
+    return True if s1 == s2 else False 
+    
+def isAnagramBetter(s1, s2):
+  if (len(s1) != len(s2) ) :
+    return False 
+  else :
+    arr1 = [ 0 for i in range(26) ]
+    arr2 = [0 for i in range(26) ]
+    for i in range(len(s1)) :
+      arr1[ord( s1[i] ) - 97] = arr1[ord( s1[i] ) - 97] + 1
+      arr2[ord( s2[i] ) - 97] = arr2[ord( s2[i] ) - 97] + 1
+    print(arr1)
+    print(arr2)
+    return True if arr1 == arr2 else False 
+  
+  
+
+s1 = input()
+s2 = input()
+print(isAnagramBetter(s1, s2))
+  
+elbow
+below
+STDIN
+Output:
+
+[0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+[0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+True
+
+......................................
+
+# brute force approach
+def isAnagram(s1, s2):
+  if len(s1) != len(s2):
+    return False 
+  else :
+    s1 = sorted(list(s1))
+    s2=  sorted(list(s2));
+    return True if s1 == s2 else False 
+    
+def isAnagramBetter(s1, s2):
+  if (len(s1) != len(s2) ) :
+    return False 
+  else :
+    arr1 = [ 0 for i in range(26) ]
+    arr2 = [0 for i in range(26) ]
+    for i in range(len(s1)) :
+      index1 = ord( s1[i] ) - 97
+      index2 = ord( s2[i] ) - 97
+      arr1[index1] = arr1[index1] + 1
+      arr2[index2] = arr2[index2] + 1
+    print(arr1)
+    print(arr2)
+    return True if arr1 == arr2 else False 
+  
+  
+
+s1 = input()
+s2 = input()
+print(isAnagramBetter(s1, s2))
+........................
+
+ate,elbow,tan,eat,tea,ant,below
+make into groups
+[ate,eat,tea],[tan,ant],[below,elbow]
+
+
+.................................................................
+
+[2,5,3,9,8,7,12]
+k=15
+
+def orderOfnSquare(arr, k):
+  n = len(arr)
+  for i in range(0, n):
+    for j in range(i+1, n):
+      if arr[i] + arr[j] == k :
+        return True 
+  return False 
+arr = [2,5,3,9,8,7,12]
+k = 100
+print(orderOfnSquare(arr, k))
+
+...............................
+def orderOfnSquare(arr, k):
+  n = len(arr)
+  for i in range(0, n):
+    for j in range(i+1, n):
+      if arr[i] + arr[j] == k :
+        return True 
+  return False 
+  
+def hashingMethod(arr, k):
+  # create a dictionary from a list
+  numbers = dict()
+  n = len(arr)
+  for number in arr:
+    if k-number not in numbers.keys():
+      numbers[number] = True   # inserting a key-value pair
+    else :
+      print(numbers)
+      return True 
+  print(numbers)
+  return False 
+
+arr = [2,5,3,9,8,7,12]
+k = 70
+
+Input for the program ( Optional )
+STDIN
+Output:
+
+{2: True, 5: True, 3: True, 9: True, 8: True, 7: True, 12: True}
+False
+print(hashingMethod(arr, k))
+  
+  
